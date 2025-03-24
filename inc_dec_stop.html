@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p1" style="font-size: 50px;">Hello</p>
+    <button onclick="changeFont(1)">Increase</button>
+    <button onclick="changeFont(-1)">Decrease</button>
+    <button onclick="stopped = true">Stop</button>
+
+    <script>
+        let font = 50, stopped = false, direction = 0;
+
+        function changeFont(d) {
+            if (stopped) { direction = d; stopped = false; return; }
+            if ((d > 0 && font < 100) || (d < 0 && font > 15)) {
+                font += d;
+                document.getElementById('p1').style.fontSize = font + 'px';
+                setTimeout(() => changeFont(d), 100);
+            }
+        }
+    </script>
+</body>
+</html>
